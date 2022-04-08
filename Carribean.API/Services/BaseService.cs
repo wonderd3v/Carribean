@@ -24,7 +24,7 @@ namespace Carribean.API.Services
             _dbSet = _context.Set<TEntity>();
 
         }
-        public IQueryable<TEntity> Query()
+        public virtual IQueryable<TEntity> Query()
         {
             return _dbSet.AsQueryable();
         }

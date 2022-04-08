@@ -29,6 +29,19 @@ namespace Carribean.API.Controllers
             return Ok(queryResult);
         }
 
+        [HttpGet("{id}")]
+        public virtual IActionResult GetById(int id)
+        {
+            var entityById = _baseService.GetById(id);
+
+            var isEntityNull = entityById == null;
+
+            if (isEntityNull)
+                return NoContent();
+
+            return Ok(entityById);
+        }
+
         [HttpPost]
         public virtual async Task<IActionResult> Create([FromBody] TEntity entity)
         {
