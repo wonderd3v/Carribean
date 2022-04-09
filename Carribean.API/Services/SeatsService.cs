@@ -32,7 +32,7 @@ namespace Carribean.API.Services
                       .Where(s => s.SeatCode == seatCode)
                       .FirstOrDefault();
 
-            seat.IsAvailable = true;
+            seat.IsAvailable = false;
             _context.Update(seat);
 
             await _context.SaveChangesAsync();
