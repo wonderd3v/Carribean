@@ -6,6 +6,7 @@ namespace Carribean.API.Services
     public interface ISeatsService : IBaseService<Seat> 
     {
         List<Seat>? AvailableSeats();
+        Task UpdateAvailabilityBySeatCode(string seatCode);
     }
     public class SeatsService : BaseServices<Seat>, ISeatsService
     {
@@ -23,6 +24,18 @@ namespace Carribean.API.Services
                 return null;
 
             return availableSeats;
+        }
+
+        public async Task UpdateAvailabilityBySeatCode(string seatCode)
+        {
+            var seat = Query()
+                      .Where(s => s.SeatCode == seatCode)
+                      .FirstOrDefault();
+
+            seat.IsAvailable = true;
+            _context.Update(seat);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

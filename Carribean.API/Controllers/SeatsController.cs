@@ -22,5 +22,13 @@ namespace Carribean.API.Controllers
 
             return Ok(availableSeats);
         }
+
+        [HttpPut("{seatCode}/availability")]
+        public async Task<IActionResult> UpdateSeatavAilability(string seatCode)
+        {
+            await _seatsServices.UpdateAvailabilityBySeatCode(seatCode);
+
+            return Ok();
+        }
     }
 }
