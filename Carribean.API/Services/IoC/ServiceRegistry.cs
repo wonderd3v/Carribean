@@ -8,6 +8,8 @@ namespace Carribean.API.IoC
         {
             services.AddTransient<IMovieService, MovieService>();
             services.AddTransient<ISeatsService, SeatsService>();
+            services.AddTransient<ITicketService, TicketServices>();
+            services.AddTransient<IUserService, UserService>(); 
         }
     }
 }
